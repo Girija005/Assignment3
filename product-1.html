@@ -307,10 +307,26 @@
           document.body.style.overflow = "auto"; // Restore scrolling
         }
       });
+
+      // Product thumbnails functionality
+      const thumbnails = document.querySelectorAll(".thumbnail");
+      const mainImage = document.querySelector(".product-main-image img");
+
+      thumbnails.forEach((thumbnail) => {
+        thumbnail.addEventListener("click", function () {
+          // Remove active class from all thumbnails
+          thumbnails.forEach((t) => t.classList.remove("active"));
+
+          // Add active class to clicked thumbnail
+          this.classList.add("active");
+
+          // Update main image source
+          const newImgSrc = this.querySelector("img").src;
+          mainImage.src = newImgSrc;
+        });
+      });
       
     </script>
-
-
 
 
 </body>
