@@ -212,3 +212,27 @@ button {
 .color-option.active {
   border-color: #333;
 }
+
+/* Product Description with Features */
+.product-description-container {
+  display: flex;
+  padding: 40px 10%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.product-description {
+  flex: 2;
+}
+
+.product-description h2 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.description-content p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
