@@ -247,7 +247,36 @@
       const searchModal = document.getElementById("searchModal");
       const closeSearch = document.querySelector(".close-search");
       const searchInput = document.getElementById("searchInput");
-      
+
+      searchIcon.addEventListener("click", (e) => {
+        e.preventDefault();
+        searchModal.classList.add("active");
+        setTimeout(() => {
+          searchInput.focus();
+        }, 100);
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      });
+
+      closeSearch.addEventListener("click", () => {
+        searchModal.classList.remove("active");
+        document.body.style.overflow = "auto"; // Restore scrolling
+      });
+
+      // Close search modal when clicking outside of it
+      window.addEventListener("click", (e) => {
+        if (e.target === searchModal) {
+          searchModal.classList.remove("active");
+          document.body.style.overflow = "auto"; // Restore scrolling
+        }
+      });
+
+      // Close search modal with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && searchModal.classList.contains("active")) {
+          searchModal.classList.remove("active");
+          document.body.style.overflow = "auto"; // Restore scrolling
+        }
+      });
     </script>
    
 
