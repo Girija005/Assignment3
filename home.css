@@ -164,6 +164,65 @@ header {
   animation-play-state: paused;
 }
 
+/* Add this after the promo-banner styles */
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background-image: url("src/hero.png"); /* Replace with your hero image */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.hero-logo {
+  font-family: "Crushed", sans-serif;
+  font-size: 8rem;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-family: "Crimson Text", serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments for hero section */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    height: 60vh;
+  }
+
+  .hero-logo {
+    font-size: 4rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.2rem;
+  }
+}
+
 .products-showcase {
   padding: 20px 5%;
   display: flex;
