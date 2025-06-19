@@ -65,3 +65,269 @@ header {
   background-color: #333;
   transition: all 0.3s ease;
 }
+
+/* Mobile responsive design */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    position: absolute;
+    right: 40px;
+    top: 25px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    z-index: 99;
+    transition: right 0.5s ease;
+    margin: 0;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .icons {
+    font-family: "Crushed", sans-serif;
+    position: absolute;
+    right: 80px;
+    top: 25px;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -8px);
+  }
+
+  /* Adjust product showcase for mobile */
+  .products-showcase {
+    padding: 30px 5%;
+    height: 100%;
+  }
+
+  .product-item {
+    width: 100%;
+  }
+
+  /* Adjust about section for mobile */
+  .about-section {
+    flex-direction: column;
+    padding: 30px 5%;
+  }
+
+  .about-content {
+    padding: 20px 0;
+  }
+}
+
+.promo-banner {
+  border: 0.001rem solid #555;
+  background: #f5f5f5;
+  padding: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.promo-banner p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/* On hover, pause the animation */
+.promo-banner:hover p {
+  animation-play-state: paused;
+}
+
+.products-showcase {
+  padding: 20px 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-height: calc(100vh - 50rem); /* Subtract header and banner height */
+  min-height: 45rem;
+  overflow: hidden;
+}
+
+.product-item {
+  width: 35%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-item img {
+  max-width: 100%;
+}
+
+.center-logo {
+  font-family: "Crushed", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* For mobile screens */
+@media screen and (max-width: 768px) {
+  .products-showcase {
+    padding: 15px 3%;
+    max-height: calc(100vh - 110px);
+  }
+
+  .product-item {
+    width: 48%; /* Slightly larger on mobile to be more visible */
+    padding: 5px;
+  }
+
+  .product-item img {
+    max-height: 120px;
+  }
+
+  .center-logo {
+    font-size: 30px;
+  }
+}
+
+
+/* About Us Section - Add after the hero section */
+.about-us-section {
+  display: flex;
+  padding: 60px 10%;
+  background-color: #fff;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.about-us-image {
+  flex: 1;
+  max-width: 40%;
+}
+
+.about-us-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.about-us-content {
+  flex: 1;
+  padding: 0 40px;
+}
+
+.about-us-content h2 {
+  font-family: "Crimson Text", serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.about-us-content p {
+  font-family: "Crimson Text", serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Responsive adjustments for About Us section */
+@media screen and (max-width: 768px) {
+  .about-us-section {
+    flex-direction: column;
+    padding: 40px 5%;
+  }
+
+  .about-us-image {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .about-us-content {
+    padding: 0;
+  }
+
+  .about-us-content h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+/* Update the About Section */
+.about-section {
+  display: flex;
+  padding: 50px 10%;
+  background-color: #fff;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.about-content {
+  flex: 1;
+  padding: 20px 40px;
+}
+
+/* Fix for mobile screens */
+@media screen and (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    padding: 30px 5%;
+  }
+
+  .about-image {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .about-image img {
+    max-height: 300px;
+  }
+
+  .about-content {
+    padding: 20px 0;
+  }
+}
