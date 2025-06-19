@@ -167,3 +167,46 @@ header {
   font-weight: bold;
   font-size: 1rem;
 }
+
+/* Newsletter Section */
+.newsletter {
+  margin: 60px auto;
+  text-align: left;
+  padding: 0 10%;
+}
+
+.newsletter h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.newsletter-form input {
+  padding: 10px 15px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-right: none;
+}
+
+.newsletter-form button {
+  padding: 10px 15px;
+  background: white;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.social-icon {
+  color: #333;
+}
