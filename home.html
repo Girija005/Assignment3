@@ -185,6 +185,70 @@
         </div>
       </div>
     </div>
+    <!-- Search Modal -->
+    <div class="search-modal" id="searchModal">
+      <div class="search-modal-content">
+        <span class="close-search">&times;</span>
+        <h2>Search our store</h2>
+        <div class="search-form">
+          <input
+            type="text"
+            placeholder="What are you looking for?"
+            id="searchInput"
+            autofocus
+          />
+          <button type="submit">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="popular-searches">
+          <p>Popular searches:</p>
+          <div class="search-tags">
+            <a href="#">Baskets</a>
+            <a href="#">Storage</a>
+            <a href="#">Throws</a>
+            <a href="#">Sale</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript for handling the hamburger menu
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a nav link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Search Modal functionality
+      const searchIcon = document.getElementById("searchIcon");
+      const searchModal = document.getElementById("searchModal");
+      const closeSearch = document.querySelector(".close-search");
+      const searchInput = document.getElementById("searchInput");
+      
+    </script>
    
 
   </body>
