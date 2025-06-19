@@ -236,3 +236,56 @@ button {
   margin-bottom: 15px;
   line-height: 1.6;
 }
+
+/* Product Features - now positioned to the right */
+.product-features {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 50px; /* Aligns with content rather than heading */
+}
+
+/* Related Products */
+.related-products {
+  padding: 40px 10%;
+  background: #f9f9f9;
+}
+
+.related-products h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  font-weight: normal;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.related-item {
+  text-align: center;
+}
+
+.related-image {
+  height: 200px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.related-image img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.related-item h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
