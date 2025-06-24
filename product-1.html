@@ -50,6 +50,51 @@
       </div>
     </header>
 
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay">
+      <div class="cart-content">
+        <div class="cart-header">
+          <h2>YOUR CART</h2>
+          <button class="close-cart">&times;</button>
+        </div>
+
+        <div class="cart-items">
+          <!-- Update your cart item HTML to match this structure -->
+
+          <div class="cart-item">
+            <div class="cart-item-image">
+              <img src="src/green-bag.png" alt="Xtra Mini Market" />
+            </div>
+            <div class="cart-item-details">
+              <h3>Xtra Mini Market</h3>
+              <p class="cart-item-price">$40.00 AUD</p>
+              <div class="quantity-control">
+                <span>QTY</span>
+                <button class="qty-btn qty-decrease">-</button>
+                <input
+                  type="number"
+                  value="1"
+                  min="1"
+                  max="5"
+                  class="qty-input"
+                />
+                <button class="qty-btn qty-increase">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-subtotal">
+          <p>SUBTOTAL</p>
+          <p class="subtotal-amount">$40.00 AUD</p>
+        </div>
+
+        <div class="cart-actions">
+          <button class="checkout-btn">CHECKOUT</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Product Display Section -->
     <div class="product-display">
       <div class="product-thumbnails">
@@ -325,6 +370,74 @@
           mainImage.src = newImgSrc;
         });
       });
+
+      // Cart functionality
+      const cartIcon = document.querySelector(".icons a:last-child");
+      const cartOverlay = document.getElementById("cartOverlay");
+      const closeCart = document.querySelector(".close-cart");
+      const addToCartBtn = document.querySelector(".add-to-cart");
+      const qtyDecreaseBtn = document.querySelector(".qty-decrease");
+      const qtyIncreaseBtn = document.querySelector(".qty-increase");
+      const qtyInput = document.querySelector(".qty-input");
+
+      // Open cart when cart icon is clicked
+      cartIcon.addEventListener("click", (e) => {
+        e.preventDefault();
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      });
+
+      // Close cart when X is clicked
+      closeCart.addEventListener("click", () => {
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = "auto"; // Restore scrolling
+      });
+
+      // Close cart when clicking outside of it
+      window.addEventListener("click", (e) => {
+        if (e.target === cartOverlay) {
+          cartOverlay.classList.remove("active");
+          document.body.style.overflow = "auto"; // Restore scrolling
+        }
+      });
+
+      // Add to cart functionality
+      addToCartBtn.addEventListener("click", () => {
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      // Quantity controls
+      qtyDecreaseBtn.addEventListener("click", () => {
+        let currentQty = parseInt(qtyInput.value);
+        if (currentQty > 1) {
+          qtyInput.value = currentQty - 1;
+          updateSubtotal();
+        }
+      });
+
+      qtyIncreaseBtn.addEventListener("click", () => {
+        let currentQty = parseInt(qtyInput.value);
+        qtyInput.value = currentQty + 1;
+        updateSubtotal();
+      });
+
+      qtyInput.addEventListener("change", () => {
+        if (qtyInput.value < 1) {
+          qtyInput.value = 1;
+        }
+        updateSubtotal();
+      });
+
+      // Update subtotal based on quantity
+      function updateSubtotal() {
+        const price = 40.0;
+        const qty = parseInt(qtyInput.value);
+        const subtotal = price * qty;
+        document.querySelector(
+          ".subtotal-amount"
+        ).textContent = `$${subtotal.toFixed(2)} AUD`;
+      }
       
     </script>
 

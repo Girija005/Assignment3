@@ -312,6 +312,146 @@
         </div>
       </div>
     </div>
+    <script>
+      // JavaScript for handling the hamburger menu
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking a nav link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // Search Modal functionality
+      const searchIcon = document.getElementById("searchIcon");
+      const searchModal = document.getElementById("searchModal");
+      const closeSearch = document.querySelector(".close-search");
+      const searchInput = document.getElementById("searchInput");
+
+      searchIcon.addEventListener("click", (e) => {
+        e.preventDefault();
+        searchModal.classList.add("active");
+        setTimeout(() => {
+          searchInput.focus();
+        }, 100);
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      });
+
+      closeSearch.addEventListener("click", () => {
+        searchModal.classList.remove("active");
+        document.body.style.overflow = "auto"; // Restore scrolling
+      });
+
+      // Close search modal when clicking outside of it
+      window.addEventListener("click", (e) => {
+        if (e.target === searchModal) {
+          searchModal.classList.remove("active");
+          document.body.style.overflow = "auto"; // Restore scrolling
+        }
+      });
+
+      // Close search modal with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && searchModal.classList.contains("active")) {
+          searchModal.classList.remove("active");
+          document.body.style.overflow = "auto"; // Restore scrolling
+        }
+      });
+
+      // Product thumbnails functionality
+      const thumbnails = document.querySelectorAll(".thumbnail");
+      const mainImage = document.querySelector(".product-main-image img");
+
+      thumbnails.forEach((thumbnail) => {
+        thumbnail.addEventListener("click", function () {
+          // Remove active class from all thumbnails
+          thumbnails.forEach((t) => t.classList.remove("active"));
+
+          // Add active class to clicked thumbnail
+          this.classList.add("active");
+
+          // Update main image source
+          const newImgSrc = this.querySelector("img").src;
+          mainImage.src = newImgSrc;
+        });
+      });
+
+      // Cart functionality
+      const cartIcon = document.querySelector(".icons a:last-child");
+      const cartOverlay = document.getElementById("cartOverlay");
+      const closeCart = document.querySelector(".close-cart");
+      const addToCartBtn = document.querySelector(".add-to-cart");
+      const qtyDecreaseBtn = document.querySelector(".qty-decrease");
+      const qtyIncreaseBtn = document.querySelector(".qty-increase");
+      const qtyInput = document.querySelector(".qty-input");
+
+      // Open cart when cart icon is clicked
+      cartIcon.addEventListener("click", (e) => {
+        e.preventDefault();
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      });
+
+      // Close cart when X is clicked
+      closeCart.addEventListener("click", () => {
+        cartOverlay.classList.remove("active");
+        document.body.style.overflow = "auto"; // Restore scrolling
+      });
+
+      // Close cart when clicking outside of it
+      window.addEventListener("click", (e) => {
+        if (e.target === cartOverlay) {
+          cartOverlay.classList.remove("active");
+          document.body.style.overflow = "auto"; // Restore scrolling
+        }
+      });
+
+      // Add to cart functionality
+      addToCartBtn.addEventListener("click", () => {
+        cartOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      // Quantity controls
+      qtyDecreaseBtn.addEventListener("click", () => {
+        let currentQty = parseInt(qtyInput.value);
+        if (currentQty > 1) {
+          qtyInput.value = currentQty - 1;
+          updateSubtotal();
+        }
+      });
+
+      qtyIncreaseBtn.addEventListener("click", () => {
+        let currentQty = parseInt(qtyInput.value);
+        qtyInput.value = currentQty + 1;
+        updateSubtotal();
+      });
+
+      qtyInput.addEventListener("change", () => {
+        if (qtyInput.value < 1) {
+          qtyInput.value = 1;
+        }
+        updateSubtotal();
+      });
+
+      // Update subtotal based on quantity
+      function updateSubtotal() {
+        const price = 40.0;
+        const qty = parseInt(qtyInput.value);
+        const subtotal = price * qty;
+        document.querySelector(
+          ".subtotal-amount"
+        ).textContent = `$${subtotal.toFixed(2)} AUD`;
+      }
+    </script>
     
 </body>
 </html>
